@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        config: {
+        project: {
             app: 'app'
         },
 
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= config.app %>'
+                        '<%= project.app %>'
                     ]
                 }
             },
@@ -29,18 +29,18 @@ module.exports = function(grunt) {
         watch: {
             html: {
                 files: [
-                    '<%= config.app %>/views/{,*/}*.html'
+                    '<%= project.app %>/views/{,*/}*.html'
                 ]
             },
             javascript: {
                 files: [
-                    '<%= config.app %>/javascripts/{,*/}*.js'
+                    '<%= project.app %>/javascripts/{,*/}*.js'
                 ],
                 tasks: ['jshint']
             },
             compass: {
                 files: [
-                    '<%= config.app %>/styles/{,*/}*.scss'
+                    '<%= project.app %>/styles/{,*/}*.scss'
                 ],
                 tasks: ['compass:dev']
             },
@@ -55,29 +55,29 @@ module.exports = function(grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%= config.app %>/views/{,*/}*.html',
-                    '<%= config.app %>/styles/{,*/}*.{css,scss}',
-                    '<%= config.app %>/javascripts/{,*/}*.js',
-                    '<%= config.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
+                    '<%= project.app %>/views/{,*/}*.html',
+                    '<%= project.app %>/styles/{,*/}*.{css,scss}',
+                    '<%= project.app %>/javascripts/{,*/}*.js',
+                    '<%= project.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
                 ]
             },
         },
         compass: {
             dev: {
                 options: {
-                    sassDir: '<%= config.app %>/styles',
-                    cssDir: '<%= config.app %>/styles',
-                    imagesDir: '<%= config.app %>/images',
-                    importPath: '<%= config.app %>/bower_components',
+                    sassDir: '<%= project.app %>/styles',
+                    cssDir: '<%= project.app %>/styles',
+                    imagesDir: '<%= project.app %>/images',
+                    importPath: '<%= project.app %>/bower_components',
                     environment: 'development'
                 }
             },
             prod: {
                 options: {
-                    sassDir: '<%= config.app %>/styles',
-                    cssDir: '<%= config.app %>/styles',
-                    imagesDir: '<%= config.app %>/images',
-                    importPath: '<%= config.app %>/bower_components',
+                    sassDir: '<%= project.app %>/styles',
+                    cssDir: '<%= project.app %>/styles',
+                    imagesDir: '<%= project.app %>/images',
+                    importPath: '<%= project.app %>/bower_components',
                     environment: 'production'
                 }
             },
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
         jshint: {
             files: [
                 'gruntfile.js',
-                '<%= config.app %>/javascripts/{,*/}*.js'
+                '<%= project.app %>/javascripts/{,*/}*.js'
             ]
         }
     });
